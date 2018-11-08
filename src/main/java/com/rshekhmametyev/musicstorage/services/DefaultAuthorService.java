@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 @Service
@@ -19,12 +20,12 @@ public class DefaultAuthorService implements AuthorService {
     }
 
     @Override
-    public List<Author> getByNickname(String nickname) {
+    public Optional<Author> getByNickname(String nickname) {
         if (Strings.isNullOrEmpty(nickname)) {
-            return Collections.emptyList();
+            return Optional.empty();
         }
 
-        return Lists.newArrayList(this.authorRepository.findByNickname(nickname));
+        return Optional.ofNullable(this.authorRepository.findByNickname(nickname));
     }
 
     @Override
