@@ -11,4 +11,6 @@ public interface AuthorService {
     List<Author> get();
 
     boolean delete(UUID id);
+
+    UUID add(Author author);
 }

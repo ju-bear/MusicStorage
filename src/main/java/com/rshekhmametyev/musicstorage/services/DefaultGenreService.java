@@ -6,6 +6,7 @@ import com.rshekhmametyev.musicstorage.repositories.GenreRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 
 @Service
 public class DefaultGenreService implements GenreService {
@@ -17,6 +18,15 @@ public class DefaultGenreService implements GenreService {
 
     @Override
     public List<Genre> get() {
-        return Lists.newArrayList(genreRepository.findAll());
+        return Lists.newArrayList(this.genreRepository.findAll());
+    }
+
+    @Override
+    public UUID add(Genre genre) {
+        UUID id = UUID.randomUUID();
+        genre.setId(id);
+
+        this.genreRepository.save(genre);
+        return id;
     }
 }

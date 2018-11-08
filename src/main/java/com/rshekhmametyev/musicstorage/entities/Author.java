@@ -2,13 +2,14 @@ package com.rshekhmametyev.musicstorage.entities;
 
 import javax.persistence.*;
 import java.time.LocalDate;
+import java.util.UUID;
 
 @Entity
 @Table(name = "Author")
 public class Author {
     @Id
     @Column(name = "AuthorId")
-    private int id;
+    private UUID id;
     @Column(name = "Nickname")
     private String nickname;
     @Column(name = "FirstName")
@@ -26,11 +27,11 @@ public class Author {
     @JoinColumn(name = "GenreId")
     private Genre genre;
 
-    public int getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

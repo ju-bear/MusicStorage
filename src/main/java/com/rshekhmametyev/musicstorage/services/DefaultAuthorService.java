@@ -24,12 +24,12 @@ public class DefaultAuthorService implements AuthorService {
             return Collections.emptyList();
         }
 
-        return Lists.newArrayList(authorRepository.findByNickname(nickname));
+        return Lists.newArrayList(this.authorRepository.findByNickname(nickname));
     }
 
     @Override
     public List<Author> get() {
-        return Lists.newArrayList(authorRepository.findAll());
+        return Lists.newArrayList(this.authorRepository.findAll());
     }
 
     @Override
@@ -40,5 +40,14 @@ public class DefaultAuthorService implements AuthorService {
 
         authorRepository.deleteById(id);
         return true;
+    }
+
+    @Override
+    public UUID add(Author author) {
+        UUID id = UUID.randomUUID();
+        author.setId(id);
+
+        this.authorRepository.save(author);
+        return id;
     }
 }
