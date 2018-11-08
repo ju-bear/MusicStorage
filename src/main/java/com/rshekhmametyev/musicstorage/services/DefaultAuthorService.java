@@ -4,11 +4,13 @@ import com.google.common.base.Strings;
 import com.google.common.collect.Lists;
 import com.rshekhmametyev.musicstorage.entities.Author;
 import com.rshekhmametyev.musicstorage.repositories.AuthorRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class DefaultAuthorService implements AuthorService {
     private final AuthorRepository authorRepository;
 
@@ -22,14 +24,12 @@ public class DefaultAuthorService implements AuthorService {
             return Collections.emptyList();
         }
 
-        List<Author> result = Lists.newArrayList(authorRepository.findByNickname(nickname));
-        return result;
+        return Lists.newArrayList(authorRepository.findByNickname(nickname));
     }
 
     @Override
     public List<Author> get() {
-        List<Author> result = Lists.newArrayList(authorRepository.findAll());
-        return result;
+        return Lists.newArrayList(authorRepository.findAll());
     }
 
     @Override
