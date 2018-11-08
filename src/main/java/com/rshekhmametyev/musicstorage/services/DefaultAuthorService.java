@@ -20,12 +20,12 @@ public class DefaultAuthorService implements AuthorService {
     }
 
     @Override
-    public Optional<Author> getByNickname(String nickname) {
+    public Optional<Author> getByNicknameStartsWith(String nickname) {
         if (Strings.isNullOrEmpty(nickname)) {
             return Optional.empty();
         }
 
-        return Optional.ofNullable(this.authorRepository.findByNickname(nickname));
+        return this.authorRepository.findByNicknameStartsWith(nickname);
     }
 
     @Override
@@ -45,6 +45,10 @@ public class DefaultAuthorService implements AuthorService {
 
     @Override
     public UUID add(Author author) {
+        if (author == null) {
+            throw new IllegalArgumentException("Author cannot be null");
+        }
+
         UUID id = UUID.randomUUID();
         author.setId(id);
 

@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface AuthorService {
-    Optional<Author> getByNickname(String nickname);
+    Optional<Author> getByNicknameStartsWith(String nickname);
 
     List<Author> get();
 

@@ -7,9 +7,9 @@ import java.util.List;
 import java.util.UUID;
 
 public interface MusicTrackRepository extends CrudRepository<MusicTrack, UUID> {
-    List<MusicTrack> findAllByTitle(String title);
+    Iterable<MusicTrack> findAllByTitleStartingWith(String title);
 
-    List<MusicTrack> findAllByAlbumId(UUID id);
+    Iterable<MusicTrack> findAllByAlbumId(UUID id);
 
-    List<MusicTrack> findAllByAuthorId(UUID id);
+    Iterable<MusicTrack> findAllByAuthorId(UUID id);
 }

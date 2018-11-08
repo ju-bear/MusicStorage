@@ -23,6 +23,10 @@ public class DefaultGenreService implements GenreService {
 
     @Override
     public UUID add(Genre genre) {
+        if (genre == null) {
+            throw new IllegalArgumentException("Genre cannot be null");
+        }
+
         UUID id = UUID.randomUUID();
         genre.setId(id);
 
