@@ -1,15 +1,29 @@
 package com.rshekhmametyev.musicstorage.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "Author")
 public class Author {
+    @Id
+    @Column(name = "AuthorId")
     private int id;
+    @Column(name = "Nickname")
     private String nickname;
+    @Column(name = "FirstName")
     private String firstName;
+    @Column(name = "LastName")
     private String lastName;
+    @Column(name = "Patronymic")
     private String patronymic;
+    @Column(name = "Birthdate")
     private LocalDate birthdate;
+    @Column(name = "Country")
     private String country; // TODO should a separate entity be used?
+
+    @ManyToOne
+    @JoinColumn(name = "GenreId")
     private Genre genre;
 
     public int getId() {

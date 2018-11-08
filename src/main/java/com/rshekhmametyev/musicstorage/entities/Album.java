@@ -1,16 +1,26 @@
 package com.rshekhmametyev.musicstorage.entities;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+@Entity
+@Table(name = "Album")
 public class Album {
+    @Id
+    @Column(name = "AlbumId")
     private UUID id;
+    @Column(name = "Title")
     private String title;
+    @Column(name = "ReleaseDate")
     private LocalDate releaseDate;
-    private boolean isSingle;
+    @Column(name = "AlbumType")
     private AlbumType albumType;
+    @OneToMany
     private List<MusicTrack> musicTracks;
+    @ManyToOne
+    @JoinColumn(name = "GenreId")
     private Genre genre;
 
     public UUID getId() {
@@ -35,14 +45,6 @@ public class Album {
 
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
-    }
-
-    public boolean isSingle() {
-        return isSingle;
-    }
-
-    public void setSingle(boolean single) {
-        isSingle = single;
     }
 
     public AlbumType getAlbumType() {

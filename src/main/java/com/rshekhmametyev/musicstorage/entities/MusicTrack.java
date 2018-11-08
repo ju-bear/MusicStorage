@@ -1,13 +1,25 @@
 package com.rshekhmametyev.musicstorage.entities;
 
+import javax.persistence.*;
 import java.util.UUID;
 
+@Entity
+@Table(name = "MusicTrack")
 public class MusicTrack {
+    @Id
+    @Column(name = "MusicTrackId")
     private UUID id;
+    @Column(name = "Title")
     private String title;
+    @Column(name = "DurationMillis")
     private long durationMillis;
+    @ManyToOne
+    @JoinColumn(name = "AuthorId")
     private Author author;
+    @Column(name = "CreationDate")
     private int creationDate;
+    @ManyToOne
+    @JoinColumn(name = "AlbumId")
     private Album album;
 
     public UUID getId() {
