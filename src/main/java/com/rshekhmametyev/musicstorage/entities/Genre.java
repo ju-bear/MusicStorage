@@ -1,5 +1,6 @@
 package com.rshekhmametyev.musicstorage.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,15 +12,12 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "genre")
+@Data
 public class Genre {
     @Id
     @Column(name = "GenreId")
-    @Getter
-    @Setter
     private UUID id;
 
     @Column(name = "Title", nullable = false)
-    @Getter
-    @Setter
     private String title;
 }

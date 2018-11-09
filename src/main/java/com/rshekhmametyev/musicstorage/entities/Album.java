@@ -1,5 +1,6 @@
 package com.rshekhmametyev.musicstorage.entities;
 
+import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,32 +11,23 @@ import java.util.UUID;
 
 @Entity
 @Table(name = "Album")
+@Data
 public class Album {
     @Id
     @Column(name = "AlbumId")
-    @Getter
-    @Setter
     private UUID id;
 
     @Column(name = "Title", nullable = false)
-    @Getter
-    @Setter
     private String title;
 
     @Column(name = "ReleaseDate", nullable = false)
-    @Getter
-    @Setter
     private LocalDate releaseDate;
 
     @OneToMany
     @JoinColumn(name = "AuthorId")
-    @Getter
-    @Setter
     private List<MusicTrack> musicTracks;
 
     @ManyToOne
     @JoinColumn(name = "GenreId", nullable = false)
-    @Getter
-    @Setter
     private Genre genre;
 }
