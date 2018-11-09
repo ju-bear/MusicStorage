@@ -3,8 +3,10 @@ package com.rshekhmametyev.musicstorage.services;
 import com.google.common.collect.Lists;
 import com.rshekhmametyev.musicstorage.entities.Album;
 import com.rshekhmametyev.musicstorage.repositories.AlbumRepository;
+import lombok.val;
 import org.springframework.stereotype.Service;
 
+import javax.validation.constraints.NotNull;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -18,8 +20,12 @@ public class DefaultAlbumService implements AlbumService {
     }
 
     @Override
-    public UUID add(Album album) {
-        return null;
+    public UUID add(@NotNull Album album) {
+        val id = UUID.randomUUID();
+        album.setId(id);
+
+        this.albumRepository.save(album);
+        return id;
     }
 
     @Override

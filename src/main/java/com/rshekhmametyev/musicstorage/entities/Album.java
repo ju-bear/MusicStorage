@@ -1,5 +1,8 @@
 package com.rshekhmametyev.musicstorage.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -10,59 +13,29 @@ import java.util.UUID;
 public class Album {
     @Id
     @Column(name = "AlbumId")
+    @Getter
+    @Setter
     private UUID id;
+
     @Column(name = "Title", nullable = false)
+    @Getter
+    @Setter
     private String title;
+
     @Column(name = "ReleaseDate", nullable = false)
+    @Getter
+    @Setter
     private LocalDate releaseDate;
+
     @OneToMany
     @JoinColumn(name = "AuthorId")
+    @Getter
+    @Setter
     private List<MusicTrack> musicTracks;
+
     @ManyToOne
     @JoinColumn(name = "GenreId", nullable = false)
+    @Getter
+    @Setter
     private Genre genre;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public LocalDate getReleaseDate() {
-        return releaseDate;
-    }
-
-    public void setReleaseDate(LocalDate releaseDate) {
-        this.releaseDate = releaseDate;
-    }
-
-    public AlbumType getAlbumType() {
-        return this.musicTracks == null || this.musicTracks.size() < 2 ? AlbumType.COLLECTION : AlbumType.SINGLE;
-    }
-
-    public List<MusicTrack> getMusicTracks() {
-        return musicTracks;
-    }
-
-    public void setMusicTracks(List<MusicTrack> musicTracks) {
-        this.musicTracks = musicTracks;
-    }
-
-    public Genre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
 }

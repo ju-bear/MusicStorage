@@ -1,5 +1,8 @@
 package com.rshekhmametyev.musicstorage.entities;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.UUID;
@@ -9,85 +12,43 @@ import java.util.UUID;
 public class Author {
     @Id
     @Column(name = "AuthorId")
+    @Getter
+    @Setter
     private UUID id;
+
     @Column(name = "Nickname", nullable = false)
+    @Getter
+    @Setter
     private String nickname;
+
     @Column(name = "FirstName", nullable = false)
+    @Getter
+    @Setter
     private String firstName;
+
     @Column(name = "LastName", nullable = false)
+    @Getter
+    @Setter
     private String lastName;
+
     @Column(name = "Patronymic")
+    @Getter
+    @Setter
     private String patronymic;
+
     @Column(name = "Birthdate", nullable = false)
+    @Getter
+    @Setter
     private LocalDate birthdate;
+
     @Column(name = "Country", nullable = false)
+    @Getter
+    @Setter
     private String country; // TODO should a separate entity be used?
 
     @ManyToOne
     @JoinColumn(name = "GenreId")
+    @Getter
+    @Setter
     private Genre genre;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public String getPatronymic() {
-        return patronymic;
-    }
-
-    public void setPatronymic(String patronymic) {
-        this.patronymic = patronymic;
-    }
-
-    public LocalDate getBirthdate() {
-        return birthdate;
-    }
-
-    public void setBirthdate(LocalDate birthdate) {
-        this.birthdate = birthdate;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public Genre getGenre() {
-        return genre;
-    }
-
-    public void setGenre(Genre genre) {
-        this.genre = genre;
-    }
 }
