@@ -10,17 +10,17 @@ public class Author {
     @Id
     @Column(name = "AuthorId")
     private UUID id;
-    @Column(name = "Nickname")
+    @Column(name = "Nickname", nullable = false)
     private String nickname;
-    @Column(name = "FirstName")
+    @Column(name = "FirstName", nullable = false)
     private String firstName;
-    @Column(name = "LastName")
+    @Column(name = "LastName", nullable = false)
     private String lastName;
     @Column(name = "Patronymic")
     private String patronymic;
-    @Column(name = "Birthdate")
+    @Column(name = "Birthdate", nullable = false)
     private LocalDate birthdate;
-    @Column(name = "Country")
+    @Column(name = "Country", nullable = false)
     private String country; // TODO should a separate entity be used?
 
     @ManyToOne

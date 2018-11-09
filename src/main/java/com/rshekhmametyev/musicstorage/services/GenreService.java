@@ -9,4 +9,6 @@ public interface GenreService {
     List<Genre> get();
 
     UUID add(Genre genre);
+
+    boolean delete(UUID id);
 }

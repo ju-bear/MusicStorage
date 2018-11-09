@@ -20,12 +20,12 @@ public class DefaultAuthorService implements AuthorService {
     }
 
     @Override
-    public Optional<Author> getByNicknameStartsWith(String nickname) {
+    public List<Author> getByNicknameStartsWith(String nickname) {
         if (Strings.isNullOrEmpty(nickname)) {
-            return Optional.empty();
+            return Collections.emptyList();
         }
 
-        return this.authorRepository.findByNicknameStartsWith(nickname);
+        return Lists.newArrayList(this.authorRepository.findAllByNicknameStartsWith(nickname));
     }
 
     @Override

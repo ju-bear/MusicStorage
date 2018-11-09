@@ -18,4 +18,6 @@ public interface AlbumService {
     List<Album> getByTrackId(UUID id);
 
     Optional<Album> getById(UUID id);
+
+    List<Album> get();
 }

@@ -1,6 +1,7 @@
 package com.rshekhmametyev.musicstorage.entities;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -9,17 +10,17 @@ public class MusicTrack {
     @Id
     @Column(name = "MusicTrackId")
     private UUID id;
-    @Column(name = "Title")
+    @Column(name = "Title", nullable = false)
     private String title;
-    @Column(name = "DurationMillis")
+    @Column(name = "DurationMillis", nullable = false)
     private long durationMillis;
     @ManyToOne
     @JoinColumn(name = "AuthorId")
     private Author author;
-    @Column(name = "CreationDate")
-    private int creationDate;
-    @ManyToOne
-    @JoinColumn(name = "AlbumId")
+    @Column(name = "CreationDate", nullable = false)
+    private LocalDate creationDate;
+    @ManyToOne()
+    @JoinColumn(name = "AlbumId", nullable = false)
     private Album album;
 
     public UUID getId() {
@@ -54,11 +55,11 @@ public class MusicTrack {
         this.author = author;
     }
 
-    public int getCreationDate() {
+    public LocalDate getCreationDate() {
         return creationDate;
     }
 
-    public void setCreationDate(int creationDate) {
+    public void setCreationDate(LocalDate creationDate) {
         this.creationDate = creationDate;
     }
 

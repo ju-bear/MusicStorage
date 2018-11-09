@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.UUID;
 
 @RestController
-@RequestMapping(value = "api/genre")
+@RequestMapping("api/genre")
 public class GenreController {
     private final GenreService genreService;
 
@@ -16,13 +16,18 @@ public class GenreController {
         this.genreService = genreService;
     }
 
-    @GetMapping(value = "")
+    @GetMapping("")
     public List<Genre> get() {
         return this.genreService.get();
     }
 
-    @PostMapping(value = "add")
+    @PostMapping("add")
     public UUID add(@RequestBody Genre genre) {
         return this.genreService.add(genre);
+    }
+
+    @DeleteMapping("delete/{id}")
+    public boolean delete(@PathVariable UUID id) {
+        return this.genreService.delete(id);
     }
 }

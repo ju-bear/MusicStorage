@@ -33,4 +33,14 @@ public class DefaultGenreService implements GenreService {
         this.genreRepository.save(genre);
         return id;
     }
+
+    @Override
+    public boolean delete(UUID id) {
+        if (!this.genreRepository.existsById(id)) {
+            return false;
+        }
+
+        this.genreRepository.deleteById(id);
+        return true;
+    }
 }

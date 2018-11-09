@@ -7,5 +7,5 @@ import java.util.Optional;
 import java.util.UUID;
 
 public interface AuthorRepository extends CrudRepository<Author, UUID> {
-    Optional<Author> findByNicknameStartsWith(String nickname);
+    Iterable<Author> findAllByNicknameStartsWith(String nickname);
 }

@@ -11,16 +11,15 @@ public class Album {
     @Id
     @Column(name = "AlbumId")
     private UUID id;
-    @Column(name = "Title")
+    @Column(name = "Title", nullable = false)
     private String title;
-    @Column(name = "ReleaseDate")
+    @Column(name = "ReleaseDate", nullable = false)
     private LocalDate releaseDate;
-    @Column(name = "AlbumType")
-    private AlbumType albumType;
     @OneToMany
+    @JoinColumn(name = "AuthorId")
     private List<MusicTrack> musicTracks;
     @ManyToOne
-    @JoinColumn(name = "GenreId")
+    @JoinColumn(name = "GenreId", nullable = false)
     private Genre genre;
 
     public UUID getId() {
@@ -48,11 +47,7 @@ public class Album {
     }
 
     public AlbumType getAlbumType() {
-        return albumType;
-    }
-
-    public void setAlbumType(AlbumType albumType) {
-        this.albumType = albumType;
+        return this.musicTracks == null || this.musicTracks.size() < 2 ? AlbumType.COLLECTION : AlbumType.SINGLE;
     }
 
     public List<MusicTrack> getMusicTracks() {

@@ -12,7 +12,7 @@ public class Genre {
     @Id
     @Column(name = "GenreId")
     private UUID id;
-    @Column(name = "Title")
+    @Column(name = "Title", nullable = false)
     private String title;
 
     public UUID getId() {

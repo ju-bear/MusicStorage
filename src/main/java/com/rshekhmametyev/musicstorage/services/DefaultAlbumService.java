@@ -1,5 +1,6 @@
 package com.rshekhmametyev.musicstorage.services;
 
+import com.google.common.collect.Lists;
 import com.rshekhmametyev.musicstorage.entities.Album;
 import com.rshekhmametyev.musicstorage.repositories.AlbumRepository;
 import org.springframework.stereotype.Service;
@@ -44,5 +45,10 @@ public class DefaultAlbumService implements AlbumService {
     @Override
     public Optional<Album> getById(UUID id) {
         return Optional.empty();
+    }
+
+    @Override
+    public List<Album> get() {
+        return Lists.newArrayList(this.albumRepository.findAll());
     }
 }
