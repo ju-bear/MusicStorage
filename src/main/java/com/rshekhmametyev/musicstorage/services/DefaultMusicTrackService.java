@@ -4,11 +4,13 @@ import com.google.common.collect.Lists;
 import com.rshekhmametyev.musicstorage.entities.MusicTrack;
 import com.rshekhmametyev.musicstorage.repositories.AuthorRepository;
 import com.rshekhmametyev.musicstorage.repositories.MusicTrackRepository;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@Service
 public class DefaultMusicTrackService implements MusicTrackService {
     private final MusicTrackRepository musicTrackRepository;
 
