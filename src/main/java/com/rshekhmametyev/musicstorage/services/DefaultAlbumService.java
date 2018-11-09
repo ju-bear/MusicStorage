@@ -29,7 +29,7 @@ public class DefaultAlbumService implements AlbumService {
 
     @Override
     public List<Album> getByTitleStartingWith(String title) {
-        return null;
+        return this.albumRepository.findAllByTitleStartingWith(title);
     }
 
     @Override
