@@ -1,8 +1,8 @@
 package com.rshekhmametyev.musicstorage.entities;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -24,10 +24,12 @@ public class Album {
     private LocalDate releaseDate;
 
     @OneToMany
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "AuthorId")
     private List<MusicTrack> musicTracks;
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "GenreId", nullable = false)
     private Genre genre;
 }

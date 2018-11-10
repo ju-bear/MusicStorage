@@ -3,6 +3,8 @@ package com.rshekhmametyev.musicstorage.entities;
 import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -35,6 +37,7 @@ public class Author {
     private String country; // TODO should a separate entity be used?
 
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "GenreId")
     private Genre genre;
 }
